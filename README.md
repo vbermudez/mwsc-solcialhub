@@ -25,7 +25,7 @@ Because the current support, I prefer to use pure ES6, without any transpiler, b
 - NodeJS version 6.0.0 ... But not for any particular reason ... ;)
 - Google Chrome 62.0.3202.94 (Official build) (64 bits)
 
-## Server the app!
+## Serve the app!
 
 Just run:
 
