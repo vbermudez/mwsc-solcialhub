@@ -1,1 +1,39 @@
 /* CSS3 */
+
+.main {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    padding: 5px;
+    border: 0px;
+    margin: 0px;
+}
+
+social-hub-header {
+    display: block;
+    padding: 2px;
+    width: 100%;
+    max-height: 75px;
+    background: gainsboro;
+    position: fixed;
+}
+
+social-hub-header > .social-hub-logo {
+    display: inline-table;
+    max-width: 36px;
+    padding: 2px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+social-hub-header > .social-hub-logo > img {
+    max-width: 32px;
+}
+
+social-hub-header > .social-hub-menu {
+    display: inline-table;
+    padding: 2px;
+    vertical-align: middle;
+    text-align: center;
+}

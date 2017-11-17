@@ -13,10 +13,18 @@
 
         <title>MWSC Social Hub</title>
 
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/index.css">
+
+        <!-- Preloading contents speeds up the imports of the modules! -->
+        <link rel="preload" href="js/elements/header.js" as="script">
+
+        <!-- Loading main script, using ES6 modules! -->
+        <script src="js/index.js" type="module"></script>
     </head>
 
     <body>
-        Just checkin!
+        <div class="main"> <!-- Main container -->
+            <social-hub-header data-logo="imgs/hub-icon-28061.png"></social-hub-header>
+        </div> <!-- /.main -->
     </body>
 </html>
