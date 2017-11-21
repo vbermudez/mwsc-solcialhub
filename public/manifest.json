@@ -1,8 +1,8 @@
 {
-    "name": "Wittr",
+    "name": "mwsc-socialhub",
     "scope": "/",
     "icons": [{
-      "src": "/imgs/icon.png",
+      "src": "/imgs/hub-icon-28061.png",
       "sizes": "144x144",
       "type": "image/png"
     }],

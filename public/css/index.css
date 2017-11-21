@@ -1,5 +1,30 @@
 /* CSS3 */
 
+*, ::after, ::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background-color: rgb(255, 255, 255);
+    direction: ltr;
+    font-family: Arial,Helvetica,Sans-Serif;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #222;
+}
+
 .main {
     position: absolute;
     top: 0px;
@@ -8,32 +33,4 @@
     padding: 5px;
     border: 0px;
     margin: 0px;
-}
-
-social-hub-header {
-    display: block;
-    padding: 2px;
-    width: 100%;
-    max-height: 75px;
-    background: gainsboro;
-    position: fixed;
-}
-
-social-hub-header > .social-hub-logo {
-    display: inline-table;
-    max-width: 36px;
-    padding: 2px;
-    vertical-align: middle;
-    text-align: center;
-}
-
-social-hub-header > .social-hub-logo > img {
-    max-width: 32px;
-}
-
-social-hub-header > .social-hub-menu {
-    display: inline-table;
-    padding: 2px;
-    vertical-align: middle;
-    text-align: center;
 }

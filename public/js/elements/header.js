@@ -3,6 +3,56 @@
 export class SocialHubHeader extends HTMLElement {
     constructor() {
         super();
+
+        const shadowRoot = this.attachShadow({mode: 'closed'});
+
+        shadowRoot.innerHTML = `
+            <style>
+                :host {
+                    display: block;
+                    height: 49px;
+                    margin: 0;
+                    padding: 0 13px 0 0;
+                    background-color: #f3f3f3;
+                    position: fixed;
+                    width: 100%;
+                    z-index: 905;
+                    top: 0;
+                    border-bottom: 1px solid rgba(0,0,0,.3);
+                    box-shadow: -11px 12px 23px rgba(0,0,0,.1);
+                }
+
+                .sh-logo {
+                    display: inline-block;
+                    vertical-align: middle;
+                    height: 49px;
+                    /* float: left; */
+                    width: 150px;
+                }
+
+                .sh-logo > img {
+                    margin: 7px 0 0 7px;
+                    max-width: 32px;
+                }
+
+                .sh-menu {
+                    display: inline-block;
+                }
+
+                .h-menu > ul {
+                    padding-left: 1px;
+                    margin-top: 0;
+                    margin-bottom: 9px;
+                }
+            </style>
+            <span class="sh-logo">
+                <img src="imgs/hub-icon-28061.png" alt="Social Hub!">
+            </span>
+            <span class="sh-menu">
+            </span>
+        `;
+        this._logoElement = shadowRoot.querySelector('.sh-logo');
+        this._menuElement = shadowRoot.querySelector('.sh-menu');
     }
 
     /**
@@ -11,10 +61,7 @@ export class SocialHubHeader extends HTMLElement {
      * @event
      */
     createdCallback() {
-        this.innerHTML = `<span class="social-hub-logo">
-            <img src="imgs/hub-icon-28061.png" alt="Social Hub!">
-        </span>
-        <span class="social-hub-menu"></span>`;
+        
     }
 
     /**
@@ -23,7 +70,8 @@ export class SocialHubHeader extends HTMLElement {
      * @event
      */
     connectedCallback() {
-        
+        this._menuElement.innerHTML = this.innerHTML;
+        this.innerHTML = '';
     }
 
     /**
@@ -45,4 +93,4 @@ export class SocialHubHeader extends HTMLElement {
     }
 }
 
-document.registerElement("social-hub-header", SocialHubHeader);
+customElements.define('sh-header', SocialHubHeader);

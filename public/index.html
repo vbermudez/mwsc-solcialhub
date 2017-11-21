@@ -17,14 +17,18 @@
 
         <!-- Preloading contents speeds up the imports of the modules! -->
         <link rel="preload" href="js/elements/header.js" as="script">
+        <link rel="preload" href="js/elements/menu.js" as="script">
 
         <!-- Loading main script, using ES6 modules! -->
         <script src="js/index.js" type="module"></script>
     </head>
 
     <body>
+        <sh-header data-logo="imgs/hub-icon-28061.png">
+            <sh-menu-item href="#mnu-itm-1">Menu Item 1</sh-menu-item>
+        </sh-header>
         <div class="main"> <!-- Main container -->
-            <social-hub-header data-logo="imgs/hub-icon-28061.png"></social-hub-header>
+            
         </div> <!-- /.main -->
     </body>
 </html>
