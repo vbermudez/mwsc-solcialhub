@@ -32,3 +32,7 @@ Just run:
 ```shell
 npm start
 ```
+
+## Heroku
+
+Now, the web app is accessible from [Heroku](https://mwsc-socialhub.herokuapp.com/)!
