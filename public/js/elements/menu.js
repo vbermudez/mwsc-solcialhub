@@ -14,20 +14,27 @@ export class SocialHubMenuItem extends HTMLElement {
                     padding: 0 !important;
                     display: inline-block;
                     float: left;
-                    overflow: visible;                    
+                    overflow: visible;     
+                    margin-left: 15px;               
                 }
 
                 .sh-menu-item {
                     text-decoration: none;
+                    color: inherit;
+                    position: relative;
+                    top: 4px;
                 }
 
                 .sh-active {
                     
                 }
             </style>
-            <a href="#" class="sh-menu-item"></a>
+            <a href="#" class="sh-menu-item">
+                <slot></slot>
+            </a>
         `;
         this._aElement = shadowRoot.querySelector('.sh-menu-item');
+        this.setAttribute('slot', 'menu-item');
     }
 
     /**
@@ -49,8 +56,6 @@ export class SocialHubMenuItem extends HTMLElement {
                         this.getAttribute('href') : '#';
                         
         this._aElement.setAttribute('href', href);
-        this._aElement.innerHTML = this.innerHTML;
-        this.innerHTML = '';
     }
 
     /**

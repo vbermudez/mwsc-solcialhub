@@ -27,7 +27,7 @@ export class SocialHubHeader extends HTMLElement {
                     vertical-align: middle;
                     height: 49px;
                     /* float: left; */
-                    width: 150px;
+                    width: 50px;
                 }
 
                 .sh-logo > img {
@@ -49,6 +49,7 @@ export class SocialHubHeader extends HTMLElement {
                 <img src="imgs/hub-icon-28061.png" alt="Social Hub!">
             </span>
             <span class="sh-menu">
+                <slot name="menu-item"></slot>
             </span>
         `;
         this._logoElement = shadowRoot.querySelector('.sh-logo');
@@ -70,8 +71,7 @@ export class SocialHubHeader extends HTMLElement {
      * @event
      */
     connectedCallback() {
-        this._menuElement.innerHTML = this.innerHTML;
-        this.innerHTML = '';
+        
     }
 
     /**
