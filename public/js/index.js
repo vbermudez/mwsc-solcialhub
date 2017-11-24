@@ -5,7 +5,7 @@ import { SocialHubMenuItem } from './elements/menu.js';
 // FACEBOOK API
 window.fbAsyncInit = function() {
     FB.init({
-        appId      : '1357060867755099',
+        appId      : '1357060867755099', // You'll need to change by your own!
         cookie     : true,
         xfbml      : true,
         version    : 'v2.11'
@@ -36,6 +36,22 @@ function isLogedin() {
             }
         }
         */
-        
+        console.log(response);
     });
 }
+
+window.onload = function() {
+    const header = document.querySelector('sh-header');
+
+    header.addEventListener('mnu-click', e => {
+        switch (e.detail.resource) {
+            case '#facebook':
+                isLogedin();
+
+                break;
+
+            default:
+                break;
+        }
+    });
+};

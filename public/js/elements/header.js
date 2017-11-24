@@ -5,7 +5,7 @@ export class SocialHubHeader extends HTMLElement {
         super();
 
         const shadowRoot = this.attachShadow({mode: 'closed'});
-
+        
         shadowRoot.innerHTML = `
             <style>
                 :host {
@@ -71,7 +71,19 @@ export class SocialHubHeader extends HTMLElement {
      * @event
      */
     connectedCallback() {
-        
+        const mnuItems = this.querySelectorAll('sh-menu-item');
+
+        for (const mnu of mnuItems) {
+            mnu.addEventListener('click', e => {
+                e.preventDefault();
+
+                const evtData = { detail: { resource: e.target.getAttribute('href') } };
+
+                this.dispatchEvent( new CustomEvent('mnu-click', evtData) );
+
+                return false;
+            });
+        }
     }
 
     /**
@@ -91,6 +103,7 @@ export class SocialHubHeader extends HTMLElement {
     attributeChangedCallback() {
 
     }
+
 }
 
 customElements.define('sh-header', SocialHubHeader);

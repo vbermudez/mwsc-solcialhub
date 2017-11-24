@@ -4,6 +4,11 @@ export class SocialHubMenuItem extends HTMLElement {
     constructor() {
         super();
 
+        // properties!
+        this.href = this.hasAttribute('href') ? 
+                        this.getAttribute('href') : '#';
+
+        // Shadow root
         const shadowRoot = this.attachShadow({mode: 'closed'});
 
         shadowRoot.innerHTML = `
@@ -52,10 +57,7 @@ export class SocialHubMenuItem extends HTMLElement {
      * @event
      */
     connectedCallback() {
-        const href = this.hasAttribute('href') ? 
-                        this.getAttribute('href') : '#';
-                        
-        this._aElement.setAttribute('href', href);
+        this._aElement.setAttribute('href', this.href);
     }
 
     /**
