@@ -41,10 +41,12 @@ export class FacebookAPI extends AbstractAPI {
      */
     isLogedin() {
         return new Promise((resolve, reject) => {
-            FB.getLoginStatus(function(response) {
-                const status = new ConnectionStatus(response.status === 'connected', response.authResponse || null, this.type);
+            FB.getLoginStatus(response => {
+                console.log('FB.getLoginStatus() ->', response);
 
-                resolve(status);
+                resolve(
+                    new ConnectionStatus(response.status === 'connected', response.authResponse || null, this.type)
+                );
                 /* response example
                 {
                     status: 'connected', // can be connected, not_authorized, unknown
@@ -57,6 +59,18 @@ export class FacebookAPI extends AbstractAPI {
                 }
                 */
             });
+        });
+    }
+
+    login(options = {}) {
+        return new Promise((resolve, reject) => {
+            FB.login(response => {
+                console.log('FB.login() ->', response);
+                
+                resolve(
+                    new ConnectionStatus(response.status === 'connected', response.authResponse || null, this.type)
+                );
+            }, options);
         });
     }
 }

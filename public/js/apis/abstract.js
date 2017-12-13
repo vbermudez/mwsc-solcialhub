@@ -28,6 +28,17 @@ export class AbstractAPI {
     isLogedin() {
         throw new Error('You have to implement the method isLogedin()!'); 
     }
+
+    /**
+     * Must implement!
+     * 
+     * @method
+     * @param {Object} options Options to pass to the login action
+     * @returns a Promise object
+     */
+    login(options = {}) {
+        throw new Error('You have to implement the method login()!'); 
+    }
 }
 
 /**
