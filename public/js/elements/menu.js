@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Simple menu item
+ * 
+ * @class
+ */
 export class SocialHubMenuItem extends HTMLElement {
     constructor() {
         super();

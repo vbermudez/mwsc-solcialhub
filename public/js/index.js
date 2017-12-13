@@ -1,44 +1,15 @@
 // ES6
 import { SocialHubHeader } from './elements/header.js';
 import { SocialHubMenuItem } from './elements/menu.js';
+import { FacebookAPI } from './apis/facebook.js';
+import { TwitterAPI } from './apis/twitter.js';
+import { LinkedInAPI } from './apis/linkedin.js';
+import { GitHubAPI } from './apis/github.js';
 
-// FACEBOOK API
-window.fbAsyncInit = function() {
-    FB.init({
-        appId      : '1357060867755099', // You'll need to change by your own!
-        cookie     : true,
-        xfbml      : true,
-        version    : 'v2.11'
-    });
-    
-    FB.AppEvents.logPageView();      
-};
-
-(function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-// FACEBOOK API
-
-function isLogedin() {
-    FB.getLoginStatus(function(response) {
-        /* response example
-        {
-            status: 'connected', // can be connected, not_authorized, unknown
-            authResponse: { // only included when status == 'connected'
-                accessToken: '...',
-                expiresIn:'...',
-                signedRequest:'...',
-                userID:'...'
-            }
-        }
-        */
-        console.log(response);
-    });
-}
+const fb = new FacebookAPI();
+const tw = new TwitterAPI();
+const li = new LinkedInAPI();
+const gh = new GitHubAPI();
 
 window.onload = function() {
     const header = document.querySelector('sh-header');
@@ -46,7 +17,30 @@ window.onload = function() {
     header.addEventListener('mnu-click', e => {
         switch (e.detail.resource) {
             case '#facebook':
-                isLogedin();
+                fb.isLogedin().then(status => {
+                    console.log('isLogedin() ->', status);
+                });
+
+                break;
+
+            case '#twitter':
+                tw.isLogedin().then(status => {
+                    console.log('isLogedin() ->', status);
+                });
+
+                break;
+
+            case '#linkedin':
+                li.isLogedin().then(status => {
+                    console.log('isLogedin() ->', status);
+                });
+
+                break;
+
+            case '#github':
+                gh.isLogedin().then(status => {
+                    console.log('isLogedin() ->', status);
+                });
 
                 break;
 

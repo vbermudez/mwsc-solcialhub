@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Header bar that contains menu items.
+ * 
+ * @class
+ */
 export class SocialHubHeader extends HTMLElement {
     constructor() {
         super();
