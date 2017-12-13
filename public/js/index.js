@@ -19,6 +19,14 @@ window.onload = function() {
             case '#facebook':
                 fb.isLogedin().then(status => {
                     console.log('isLogedin() ->', status);
+
+                    if (!status.connected) {
+                        return fb.login({ scope: 'public_profile,email' })
+                    }
+
+                    return status;
+                }).then(status => {
+
                 });
 
                 break;
