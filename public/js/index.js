@@ -12,7 +12,6 @@ const tw = new TwitterAPI();
 const li = new LinkedInAPI();
 const gh = new GitHubAPI();
 const osSpec = new ObjectStoreSpec('facebookAPI', { keyPath: 'userID' });
-const db = Database.open('MWSC-SOLCIALHUB', 1, osSpec);
 
 window.onload = function() {
     const header = document.querySelector('sh-header');
@@ -32,8 +31,18 @@ window.onload = function() {
                     console.log('login() ->', status);
 
                     if (status.connected) {
-                        db.objectStore('facebookAPI').put(status.response);
+                        return Database.open('MWSC-SOLCIALHUB', 1, osSpec);
                     }
+
+                    return false;
+                }).then(db => {
+                    if (db) {
+                        return db.objectStore('facebookAPI').put(status.response);
+                    }
+
+                    return false;
+                }).then(resp => {
+                    console.log('Record inserted:', resp);
                 });
 
                 break;
