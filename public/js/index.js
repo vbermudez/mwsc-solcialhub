@@ -5,11 +5,14 @@ import { FacebookAPI } from './apis/facebook.js';
 import { TwitterAPI } from './apis/twitter.js';
 import { LinkedInAPI } from './apis/linkedin.js';
 import { GitHubAPI } from './apis/github.js';
+import { Database, ObjectStore, ObjectStoreSpec } from './db/indexeddb.js';
 
 const fb = new FacebookAPI();
 const tw = new TwitterAPI();
 const li = new LinkedInAPI();
 const gh = new GitHubAPI();
+const osSpec = new ObjectStoreSpec('facebookAPI', { keyPath: 'userID' });
+const db = Database.open('MWSC-SOLCIALHUB', 1, osSpec);
 
 window.onload = function() {
     const header = document.querySelector('sh-header');
@@ -26,7 +29,11 @@ window.onload = function() {
 
                     return status;
                 }).then(status => {
+                    console.log('login() ->', status);
 
+                    if (status.connected) {
+                        db.objectStore('facebookAPI').put(status.response);
+                    }
                 });
 
                 break;
