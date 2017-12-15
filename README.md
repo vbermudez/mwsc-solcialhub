@@ -36,3 +36,9 @@ npm start
 ## Heroku
 
 Now, the web app is accessible from [Heroku](https://mwsc-socialhub.herokuapp.com/)!
+
+## IndexedDB
+
+Just added a simplistic API for to interact with the native API. I have builded some ES6 classes that demonstrates class inheritance as well as other techniques.
+
+**Have fun!**
