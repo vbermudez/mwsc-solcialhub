@@ -31,13 +31,17 @@ window.onload = function() {
                     console.log('login() ->', status);
 
                     if (status.connected) {
-                        return Database.open('MWSC-SOLCIALHUB', 1, osSpec);
+                        return Database.open('MWSC-SOLCIALHUB', 1, osSpec).then(db => {
+                            return [db, status.response];
+                        });
                     }
 
-                    return false;
-                }).then(db => {
+                    return [false, false];
+                }).then(result => {
+                    const [db, obj] = result;
+
                     if (db) {
-                        return db.objectStore('facebookAPI').put(status.response);
+                        return db.objectStore('facebookAPI').put(obj);
                     }
 
                     return false;
